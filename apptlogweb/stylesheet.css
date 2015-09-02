@@ -1,0 +1,100 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  background-color: #EEE8AA;
+  color: #806363;
+}
+.container {
+  max-width: 940px;
+  margin: 0 auto;
+}
+/*----*/
+
+/*Nav Section*/
+#top-nav .container {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 15px;
+  padding-right: 0;
+}
+#top-nav .navbar-brand {
+  font-size: 35px;
+  font-family: "Berkshire Swash", Helvetica, sans-serif;
+}
+#top-nav a {
+  font-size: 20px;
+}
+/*----*/
+
+/*Section A*/
+#section-a {
+  margin-top: 200px;
+  text-align: center;
+}
+#section-a h1 {
+  font-size: 50px;
+}
+/*----*/
+
+/*Section B*/
+#section-b, #section-c {
+  margin-top: 100px;
+  margin-bottom: 130px;
+  text-align: center;
+}
+#section-b h2, #section-c h2 {
+  font-size: 48px;
+  font-weight: 300;
+}
+#section-b p {
+  font-size: 21px;
+  font-weight: 300;
+  padding: 0 30px;
+}
+/*----*/
+
+/*Features Section*/
+#features {
+  height: 275px;
+}
+/*----*/
+
+/*Section C*/
+#section-c h1 {
+  margin: auto;
+  font-size: 150px;
+}
+/*----*/
+
+/*Button Section*/
+#signup-btn {
+  color: #806363;
+  background-color: #e85242;
+  padding: 16px 26px;
+  font-weight: bold;
+}
+#signup-btn:hover {
+  background-color:  #EEE8AA;
+}
+/*----*/
+
+/*Footer Section*/
+#footer {
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  background-color: #e85242;
+  padding: 20px;
+  bottom: 0;
+  left: 0;
+}
+#footer .btn {
+  background-color: #e85242;
+  color: #fff;
+  border: 0;
+}
+#footer .btn:hover {
+  background-color: #EEE8AA;
+  color: #806363;
+}

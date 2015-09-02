@@ -1,0 +1,10 @@
+html, body {
+  font-family: 'Lato', Helvetica, sans-serif;
+  background-color: #6632DD;
+  color: #A9DD32;
+  overflow: hidden;
+  vertical-align: baseline;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
