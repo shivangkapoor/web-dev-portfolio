@@ -8,3 +8,4 @@ Frameworks / Tools:
   -jQuery
   -JavaScript
   -SASS
+  -AngularJS
