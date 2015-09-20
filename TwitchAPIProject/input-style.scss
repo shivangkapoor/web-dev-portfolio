@@ -1,0 +1,125 @@
+//Variables ---------------------------------
+$font: "Lato", Helvetica, sans-serif;
+$primary-color: #6632DD;
+$secondary-color: #A9DD32;
+$tertiary-color: #fff;
+//-------------------------------------------
+
+//BODY-----------------------------
+body {
+  font-family: $font;
+  background-color: $primary-color;
+  color: $secondary-color;
+  vertical-align: baseline;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+//-----------------------------------
+
+//APP--------------------------------
+#app {
+  margin: 20px auto;
+  padding-top: 10px;
+  background-color: $secondary-color;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+
+}
+//------------------------------------
+
+//HEADER------------------------------
+#header {
+  h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 2px #000;
+    color: $tertiary-color;
+  }
+}
+//-----------------------------------
+
+//MENU--------------------------------
+#menu {
+  padding: 0;
+  padding-bottom: 5px;
+  margin: 0;
+
+  li {
+    background-color: $primary-color;
+    text-align: center;
+    display: inline-block;
+    padding: .5em;
+    margin: 0;
+    width: 30%;
+    color: $tertiary-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $tertiary-color;
+      color: $primary-color;
+    }
+  }
+}
+//-----------------------------------
+
+//SEARCH-----------------------------
+#search {
+  i {
+    padding-right: 10px;
+    font-size: 1.5em;
+    color: $primary-color;
+  }
+  input {
+    width: 60%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    color: $primary-color;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+//-----------------------------------
+
+//SUBSCRIPTIONS----------------------
+#subscriptions {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    padding: 5px 10px 10px 10px;
+
+    &:hover {
+      text-decoration: none;
+      color: $tertiary-color;
+    }
+    img {
+      height: 50px;
+      border-radius: 5px;
+      outline: 0;
+    }
+    div {
+      flex-grow: 2;
+      position: relative;
+    }
+    h4 {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    p {
+      font-weight: normal;
+      font-size: .8em;
+      color: $tertiary-color;
+    }
+    i {
+      color: $secondary-color;
+    }
+  }
+}
