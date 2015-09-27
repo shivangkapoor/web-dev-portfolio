@@ -6,6 +6,8 @@ body {
   text-align: center;
   font-weight: bold;
   font-size: 16px; }
+  body .title {
+    color: #fff; }
 
 #app {
   margin: 20px auto;
@@ -15,17 +17,28 @@ body {
   display: flex;
   flex-direction: column; }
 
-#header h1 {
-  font-size: 3em;
-  text-shadow: 2px 2px 2px #000;
-  color: #fff; }
+#search {
+  padding-top: 10px; }
+  #search i {
+    padding-right: 10px;
+    font-size: 1.5em;
+    color: #6632DD; }
+  #search input {
+    width: 60%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    color: #6632DD; }
+    #search input:focus {
+      outline: none; }
 
 #menu {
   padding: 0;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin: 0; }
   #menu li {
-    background-color: #6632DD;
+    font-size: 1.3em;
     text-align: center;
     display: inline-block;
     padding: .5em;
@@ -33,50 +46,29 @@ body {
     width: 30%;
     color: #fff;
     cursor: pointer; }
-    #menu li:hover {
-      background-color: #fff;
-      color: #6632DD; }
 
-#search i {
-  padding-right: 10px;
-  font-size: 1.5em;
-  color: #6632DD; }
-#search input {
-  width: 60%;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  padding-left: 5px;
-  color: #6632DD; }
-  #search input:focus {
-    outline: none; }
-
-#subscriptions {
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column; }
-  #subscriptions a {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-    padding: 5px 10px 10px 10px; }
-    #subscriptions a:hover {
-      text-decoration: none;
-      color: #fff; }
-    #subscriptions a img {
-      height: 50px;
-      border-radius: 5px;
-      outline: 0; }
-    #subscriptions a div {
-      flex-grow: 2;
-      position: relative; }
-    #subscriptions a h4 {
-      font-size: 1.5em;
-      font-weight: bold; }
-    #subscriptions a p {
-      font-weight: normal;
-      font-size: .8em;
-      color: #fff; }
-    #subscriptions a i {
-      color: #A9DD32; }
+.panel {
+  background-color: #A9DD32;
+  color: #fff;
+  text-align: left; }
+  .panel a:hover {
+    text-decoration: none; }
+  .panel li {
+    padding-bottom: 10px; }
+    .panel li span {
+      padding-left: 15px; }
+    .panel li i {
+      padding-right: 10px; }
+    .panel li p {
+      padding-top: 5px;
+      font-weight: lighter;
+      font-size: .8em; }
+  .panel img {
+    width: 50px;
+    height: 50px; }
+  .panel .fa-check {
+    color: green; }
+  .panel .fa-exclamation {
+    color: red; }
 
 /*# sourceMappingURL=output-style.css.map */
