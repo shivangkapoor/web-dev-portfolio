@@ -3,9 +3,12 @@ body {
   font-family: "Lato", Helvetica, sans-serif;
   font-size: 40px; }
 
+#header h2 {
+  text-align: center;
+  font-size: 1em; }
 #header h3 {
   color: #fff;
-  font-size: .8em; }
+  font-size: .6em; }
 
 #stories {
   font-size: .5em;

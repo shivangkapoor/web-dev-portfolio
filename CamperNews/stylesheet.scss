@@ -10,9 +10,13 @@ body {
   font-size: 40px;
 }
 #header {
+  h2 {
+    text-align: center;
+    font-size: 1em;
+  }
   h3 {
     color: $tertiary-color;
-    font-size: .8em;
+    font-size: .6em;
   }
 }
 #stories {
