@@ -13,7 +13,7 @@ body {
   padding-top: 1em;
   text-align: center;
 
-  .pull-right {
+  .header {
     color: $secondary-color;
   }
   #spacer {
@@ -22,6 +22,7 @@ body {
 }
 #search {
   padding-top: 15px;
+  padding-bottom: 5px;
 
   input {
     font-size: .8em;
@@ -50,6 +51,10 @@ body {
 
   li {
     list-style: none;
+    border: 1px solid $tertiary-color;
+    &:hover {
+      background-color: $secondary-color;
+    }
   }
   a:hover {
     text-decoration: none;
@@ -58,11 +63,11 @@ body {
   }
   h2 {
     text-decoration: underline !important;
-    font-size: .9em;
+    font-size: .8em;
     color: $tertiary-color;
   }
   p {
-    font-size: .6em;
+    font-size: .5em;
     color: $tertiary-color;
   }
 }

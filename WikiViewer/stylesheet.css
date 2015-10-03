@@ -6,13 +6,14 @@ body {
 #main {
   padding-top: 1em;
   text-align: center; }
-  #main .pull-right {
+  #main .header {
     color: #51B0D9; }
   #main #spacer {
     padding-top: 200px; }
 
 #search {
-  padding-top: 15px; }
+  padding-top: 15px;
+  padding-bottom: 5px; }
   #search input {
     font-size: .8em;
     padding-left: 15px;
@@ -31,16 +32,19 @@ body {
   color: #000; }
 
 #articles li {
-  list-style: none; }
+  list-style: none;
+  border: 1px solid #000; }
+  #articles li:hover {
+    background-color: #51B0D9; }
 #articles a:hover {
   text-decoration: none;
   background-color: #51B0D9; }
 #articles h2 {
   text-decoration: underline !important;
-  font-size: .9em;
+  font-size: .8em;
   color: #000; }
 #articles p {
-  font-size: .6em;
+  font-size: .5em;
   color: #000; }
 
 /*# sourceMappingURL=stylesheet.css.map */

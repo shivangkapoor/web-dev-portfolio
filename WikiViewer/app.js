@@ -12,6 +12,7 @@
       var results = [];
 
       $http.jsonp(WIKI_API + searchText + CALLBACK).success(function(data) {
+        view.results = 0;
         view.hide = false;
         view.show = false;
         view.articles = [];
@@ -20,8 +21,9 @@
 
         angular.forEach(results, function(info, k) {
           view.articles.push({title: info.title, body: info.extract, page: WIKI_PAGE + info.pageid});
+          view.results++;
         });
-
+        
         view.hide = true;
         view.show = true;
       });
