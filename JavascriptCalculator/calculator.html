@@ -26,31 +26,31 @@
   <section id="calc"  class="container" ng-controller="CalcController as calc">
     <input type="readonly" disabled ng-model="screen" />
     <div id="pad" class="container">
-      <div class="row">
+      <div class="row container">
         <button ng-click="clear()">C</button>
         <button ng-click="changeSign()"><sup>+</sup>/<sub>−</sub></button>
         <button ng-click="modulate()">%</button>
         <button ng-click="divide()">÷</button>
       </div>
-      <div class="row">
+      <div class="row container">
         <button ng-click="display(7)">7</button>
         <button ng-click="display(8)">8</button>
         <button ng-click="display(9)">9</button>
         <button ng-click="multiply()">x</button>
       </div>
-      <div class="row">
+      <div class="row container">
         <button ng-click="display(6)">6</button>
         <button ng-click="display(5)">5</button>
         <button ng-click="display(4)">4</button>
         <button ng-click="add()">+</button>
       </div>
-      <div class="row">
+      <div class="row container">
         <button ng-click="display(3)">3</button>
         <button ng-click="display(2)">2</button>
         <button ng-click="display(1)">1</button>
         <button ng-click="subtract()">-</button>
       </div>
-      <div class="row">
+      <div class="row container">
         <button id="zero" ng-click="display(0)">0</button>
         <button ng-click="display('.')">.</button>
         <button ng-click="submit()">=</button>

@@ -1,0 +1,29 @@
+body {
+  font-size: 40px;
+  background-color: #fff;
+  color: #FF60CF; }
+
+#board {
+  margin: 0 auto;
+  margin-top: 20px;
+  vertical-align: middle;
+  text-align: center; }
+  #board .btn {
+    background-color: #60CFFF;
+    height: 200px;
+    width: 20%;
+    margin-top: 20px;
+    margin-right: 20px; }
+
+#player-select input {
+  display: none; }
+  #player-select input:checked + label {
+    background-color: #FF60CF;
+    color: #fff; }
+#player-select .btn {
+  font-size: .7em;
+  height: 50px;
+  background-color: #60CFFF;
+  color: #fff; }
+
+/*# sourceMappingURL=stylesheet.css.map */

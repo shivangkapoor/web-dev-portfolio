@@ -1,0 +1,41 @@
+$font: 'Poiret One', cursive;
+$primary-color: #fff;
+$secondary-color: #60CFFF;
+$tertiary-color: #FF60CF;
+
+body {
+  font-size: 40px;
+  background-color: $primary-color;
+  color: $tertiary-color;
+}
+#board {
+  margin: 0 auto;
+  margin-top: 20px;
+  vertical-align: middle;
+  text-align: center;
+  
+  .btn {
+    background-color: $secondary-color;
+    height: 200px;
+    width: 20%;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+}
+#player-select {
+  input {
+    display: none;
+
+    &:checked + label {
+      background-color: $tertiary-color;;
+      color: $primary-color;
+    }
+  }
+
+  .btn {
+    font-size: .7em;
+    height: 50px;
+    background-color: $secondary-color;
+    color: $primary-color;
+  }
+}
