@@ -6,28 +6,35 @@ $tertiary-color: #FF60CF;
 body {
   font-size: 40px;
   background-color: $primary-color;
-  color: $tertiary-color;
 }
 #board {
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 10px;
   vertical-align: middle;
   text-align: center;
-  
-  .btn {
-    background-color: $secondary-color;
-    height: 200px;
+
+  .tac {
+    background-color: $tertiary-color;
+    height: 13em;
     width: 20%;
-    margin-top: 20px;
-    margin-right: 20px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+
+    i {
+      font-size: 10em;
+      color: #000 !important;
+    }
   }
 }
 #player-select {
+  padding-top: 10px;
+
   input {
     display: none;
 
     &:checked + label {
-      background-color: $tertiary-color;;
+      background-color: $secondary-color;
       color: $primary-color;
     }
   }
@@ -35,7 +42,11 @@ body {
   .btn {
     font-size: .7em;
     height: 50px;
-    background-color: $secondary-color;
+    background-color: $tertiary-color;
     color: $primary-color;
+    border-radius: 10px;
+  }
+  #reset {
+    background-color: #60FF90;
   }
 }
