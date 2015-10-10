@@ -1,0 +1,81 @@
+$green: green;
+$blue: blue;
+$red: red;
+$yellow: yellow;
+$orange: orange;
+$purple: purple;
+
+body{
+  background-color: #ccc;
+}
+#game {
+  padding-top: 20px;
+  margin: 0 auto;
+  vertical-align: middle;
+  text-align: center;
+
+  .tile {
+    width: 250px;
+    height: 150px;
+    margin: 15px;
+  }
+  .row {
+    padding-top: 20px;
+  }
+  #blue {
+    background-color: $blue;
+    &:hover {
+      background-color: lighten($blue, 20%);
+    }
+  }
+  #green {
+    background-color: $green;
+    &:hover {
+      background-color: lighten($green, 20%);
+    }
+  }
+  #purple {
+    background-color: $purple;
+    &:hover {
+      background-color: lighten($purple, 20%);
+    }
+  }
+  #orange {
+    background-color: $orange;
+    &:hover {
+      background-color: lighten($orange, 20%);
+    }
+  }
+  #red {
+    background-color: $red;
+    &:hover {
+      background-color: lighten($red, 20%);
+    }
+  }
+}
+#controller {
+  padding-top: 50px;
+  margin: 0 auto;
+  vertical-align: middle;
+  text-align: center;
+
+  label {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+  input {
+    text-align: right;
+    font-size: 30px;
+    width: 10%;
+    padding-right: 5px;
+  }
+
+  i {
+    margin-top: 20px;
+    padding: 10px 20px 10px 20px;
+    font-size: 30px;
+    &:hover {
+      background-color: #60FF90;
+    }
+  }
+}
