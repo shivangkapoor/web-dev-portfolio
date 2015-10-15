@@ -3,7 +3,6 @@ $(document).ready(function() {
   var ohs = false;
   var computerPlayer = false;
   var playerTurn = true;
-  var state = "2P";
   var turns = 0;
 
   var primaryColor = "#60FF90";
@@ -188,7 +187,8 @@ $(document).ready(function() {
   //function that handles the computer's move and then changes the board UI to reflect that
   function runComputerTurn() {
     var boardState = checkBoard();
-    var bestMove = getMiniMax(boardState);
+    var compTile = ohs? "ohs" : "exes";
+    var bestMove = getMiniMax(boardState, compTile);
 
     if(exes) {
       /*
@@ -197,11 +197,11 @@ $(document).ready(function() {
       $("#" + bestMove).append("<i class='fa fa-times'></i>");
       $("#" + bestMove).addClass("active p1");
       */
-      console.log("Computer Moves");
 
       exes = false;
       ohs = true;
       playerTurn = true;
+      checkWinner();
     } else if (ohs) {
       /*
       $("#" + bestMove).css("background", secondaryColor);
@@ -209,44 +209,19 @@ $(document).ready(function() {
       $("#" + bestMove).append("<i class='fa fa-circle-o'></i>");
       $("#" + bestMove).addClass("active p2");
       */
-      console.log("Computer Moves")
 
       exes = true;
       ohs = false;
       playerTurn = true;
+      checkWinner();
     }
   }
   //a function that returns the best move based on the current board state
-  function getMiniMax(boardState) {
+  function getMiniMax(boardState, compTile) {
+    if(compTile === "exes") {
 
+    } else if (compTile === "ohs") {
+
+    }
   }
 });
-/*
-MinMax Algorithm Psudocode
------------------------------
-def minimax(game)
-    return score(game) if game.over?
-    scores = [] # an array of scores
-    moves = []  # an array of moves
-
-    # Populate the scores array, recursing as needed
-    game.get_available_moves.each do |move|
-        possible_game = game.get_new_state(move)
-        scores.push minimax(possible_game)
-        moves.push move
-    end
-
-    # Do the min or the max calculation
-    if game.active_turn == @player
-        # This is the max calculation
-        max_score_index = scores.each_with_index.max[1]
-        @choice = moves[max_score_index]
-        return scores[max_score_index]
-    else
-        # This is the min calculation
-        min_score_index = scores.each_with_index.min[1]
-        @choice = moves[min_score_index]
-        return scores[min_score_index]
-    end
-end
-*/
