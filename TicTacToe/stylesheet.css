@@ -33,6 +33,14 @@ body {
     background-color: #60CFFF; }
     .overlay #oSelect:hover {
       background-color: #fff; }
+  .overlay #twoPlayer {
+    background-color: #60FF90; }
+    .overlay #twoPlayer:hover {
+      background-color: #fff; }
+  .overlay #singlePlayer {
+    background-color: #60CFFF; }
+    .overlay #singlePlayer:hover {
+      background-color: #fff; }
   .overlay #reset {
     font-size: 1em;
     background-color: #60FF90;

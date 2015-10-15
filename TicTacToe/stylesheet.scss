@@ -48,6 +48,19 @@ body {
       background-color: $primary-color;
     }
   }
+
+  #twoPlayer {
+    background-color: $quadrary-color;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
+  #singlePlayer {
+    background-color: $secondary-color;
+    &:hover {
+      background-color: $primary-color;
+    }
+  }
   #reset {
     font-size: 1em;
     background-color: $quadrary-color;
