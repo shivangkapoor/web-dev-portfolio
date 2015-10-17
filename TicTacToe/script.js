@@ -52,7 +52,7 @@ $(document).ready(function() {
         $(this).css("background", primaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-times'></i>");
-        $(this).addClass("active p1");
+        $(this).addClass("active ex");
 
         exes = false;
         ohs = true;
@@ -62,7 +62,7 @@ $(document).ready(function() {
         $(this).css("background", primaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-times'></i>");
-        $(this).addClass("active p1");
+        $(this).addClass("active ex");
 
         exes = false;
         ohs = true;
@@ -76,7 +76,7 @@ $(document).ready(function() {
         $(this).css("background", secondaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-circle-o'></i>");
-        $(this).addClass("active p2");
+        $(this).addClass("active oh");
 
         exes = true;
         ohs = false;
@@ -86,7 +86,7 @@ $(document).ready(function() {
         $(this).css("background", secondaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-circle-o'></i>");
-        $(this).addClass("active p2");
+        $(this).addClass("active oh");
 
         exes = true;
         ohs = false;
@@ -147,11 +147,10 @@ $(document).ready(function() {
     tempArr.forEach(function(tac) {
       if(tac.length < 3) {
         board.push(0);
-      }
-      else {
-        if(tac[3] === "p1") {
+      } else {
+        if(tac[3] === "ex") {
           board.push(2);
-        } else {
+        } else if(tac[3] === "oh") {
           board.push(5);
         }
       }
@@ -187,28 +186,24 @@ $(document).ready(function() {
   //function that handles the computer's move and then changes the board UI to reflect that
   function runComputerTurn() {
     var boardState = checkBoard();
-    var compTile = ohs? "ohs" : "exes";
+    var compTile = ohs ? "ohs" : "exes";
     var bestMove = getMiniMax(boardState, compTile);
 
     if(exes) {
-      /*
       $("#" + bestMove).css("background", primaryColor);
       $("#" + bestMove).text("");
       $("#" + bestMove).append("<i class='fa fa-times'></i>");
-      $("#" + bestMove).addClass("active p1");
-      */
+      $("#" + bestMove).addClass("active ex");
 
       exes = false;
       ohs = true;
       playerTurn = true;
       checkWinner();
     } else if (ohs) {
-      /*
       $("#" + bestMove).css("background", secondaryColor);
       $("#" + bestMove).text("");
       $("#" + bestMove).append("<i class='fa fa-circle-o'></i>");
-      $("#" + bestMove).addClass("active p2");
-      */
+      $("#" + bestMove).addClass("active oh");
 
       exes = true;
       ohs = false;
@@ -218,10 +213,14 @@ $(document).ready(function() {
   }
   //a function that returns the best move based on the current board state
   function getMiniMax(boardState, compTile) {
-    if(compTile === "exes") {
+    var preferredMoves = [4, 0, 2, 6, 8, 1, 3, 5];
 
-    } else if (compTile === "ohs") {
-
+    for(var i = 0; i < preferredMoves.length; i++) {
+      var move = preferredMoves[i];
+      console.log("move = " + move);
+      if(boardState[move] == 0 && boardState[move] !== 2 && boardState[move] !== 5) {
+        return move;
+      }
     }
   }
 });
