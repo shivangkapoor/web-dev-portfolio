@@ -54,21 +54,21 @@ $(document).ready(function() {
         $(this).append("<i class='fa fa-times'></i>");
         $(this).addClass("active ex");
 
-        exes = false;
-        ohs = true;
         turns++;
         checkWinner();
+        exes = false;
+        ohs = true;
       } else if (computerPlayer && playerTurn) {
         $(this).css("background", primaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-times'></i>");
         $(this).addClass("active ex");
 
+        turns++;
+        checkWinner();
         exes = false;
         ohs = true;
         playerTurn = false;
-        turns++;
-        checkWinner();
         runComputerTurn();
       }
     } else if(ohs) {
@@ -78,21 +78,21 @@ $(document).ready(function() {
         $(this).append("<i class='fa fa-circle-o'></i>");
         $(this).addClass("active oh");
 
-        exes = true;
-        ohs = false;
         turns++;
         checkWinner();
+        exes = true;
+        ohs = false;
       } else if (computerPlayer && playerTurn) {
         $(this).css("background", secondaryColor);
         $(this).text("");
         $(this).append("<i class='fa fa-circle-o'></i>");
         $(this).addClass("active oh");
 
+        turns++;
+        checkWinner();
         exes = true;
         ohs = false;
         playerTurn = false;
-        turns++;
-        checkWinner();
         runComputerTurn();
       }
     }
@@ -187,7 +187,7 @@ $(document).ready(function() {
   function runComputerTurn() {
     var boardState = checkBoard();
     var compTile = ohs ? "ohs" : "exes";
-    var bestMove = getMiniMax(boardState, compTile);
+    var bestMove = findBestMove(boardState, compTile);
 
     if(exes) {
       $("#" + bestMove).css("background", primaryColor);
@@ -195,24 +195,26 @@ $(document).ready(function() {
       $("#" + bestMove).append("<i class='fa fa-times'></i>");
       $("#" + bestMove).addClass("active ex");
 
+      turns++;
+      checkWinner();
       exes = false;
       ohs = true;
       playerTurn = true;
-      checkWinner();
     } else if (ohs) {
       $("#" + bestMove).css("background", secondaryColor);
       $("#" + bestMove).text("");
       $("#" + bestMove).append("<i class='fa fa-circle-o'></i>");
       $("#" + bestMove).addClass("active oh");
 
+      turns++;
+      checkWinner();
       exes = true;
       ohs = false;
       playerTurn = true;
-      checkWinner();
     }
   }
-  //a function that returns the best move based on the current board state
-  function getMiniMax(boardState, compTile) {
+  //a function that returns a preferred move based on the current board state
+  function findBestMove(boardState, compTile) {
     var preferredMoves = [4, 0, 2, 6, 8, 1, 3, 5];
 
     for(var i = 0; i < preferredMoves.length; i++) {
@@ -224,3 +226,107 @@ $(document).ready(function() {
     }
   }
 });
+
+/*
+*/
+
+
+/* MINIMAX series of functions
+
+var maxPlayer = (compTile == "exes") ? 2 : 5;
+var minPlayer = (maxPlayer == 2) ? 5 : 2;
+var bestMove = -100;
+var move = 0;
+
+for(var i = 0; i < boardState.length; i++) {
+  var newBoard = testMove(boardState, i, maxPlayer);
+  if(newBoard) {
+    var predictedMoveValue = minValue(newBoard, minPlayer, maxPlayer);
+    if(predictedMoveValue > bestMove) {
+      bestMove = predictedMoveValue;
+      move = i;
+    }
+  }
+}
+return move;
+}
+function minValue(testBoard, minPlayer, maxPlayer) {
+if(testWinner(testBoard, maxPlayer)) {
+  return 1;
+} else if (testWinner(testBoard, minPlayer)) {
+  return -1;
+} else if (testTie(testBoard)) {
+  return 0;
+} else {
+  var bestMove = 100;
+  var move = 0;
+  for (var i = 0; i < board.length; i++) {
+    var newBoard = testMove(board, i, minPlayer);
+      if(newBoard) {
+        var predictedMoveValue = maxValue(newBoard, minPlayer, maxPlayer);
+        if (predictedMoveValue < bestMove) {
+          bestMove = predictedMoveValue;
+          move = i;
+        }
+      }
+  }
+  return bestMove;
+}
+}
+function maxValue(testBoard, minPlayer, maxPlayer) {
+if (testWinner(testBoard, maxPlayer)) {
+  return 1;
+} else if(testWinner(testBoard, minPlayer)) {
+  return -1;
+} else if (testTie(testBoard)) {
+  return 0;
+} else {
+  var bestMove = -100;
+  var move = 0;
+  for(var i = 0; i < board.length; i++) {
+    var newBoard = testMove(testBoard, maxPlayer, i);
+    if (newBoard) {
+      var predictedMoveValue = minValue(newBoard, minPlayer, maxPlayer);
+      if (predictedMoveValue > bestMoveValue) {
+        bestMove = predictedMoveValue;
+        move = i;
+      }
+    }
+  }
+  return bestMove;
+}
+}
+function testMove(boardState, move, player) {
+var newBoard = boardState;
+
+if(newBoard[move] == 0) {
+  newBoard[move] = player;
+  return newBoard;
+} else {
+  return null;
+}
+}
+function testWinner(board, player) {
+if (  (board[0] == player && board[1] == player && board[2] == player) ||
+      (board[3] == player && board[4] == player && board[5] == player) ||
+      (board[6] == player && board[7] == player && board[8] == player) ||
+      (board[0] == player && board[3] == player && board[6] == player) ||
+      (board[1] == player && board[4] == player && board[7] == player) ||
+      (board[2] == player && board[5] == player && board[8] == player) ||
+      (board[0] == player && board[4] == player && board[8] == player) ||
+      (board[2] == player && board[4] == player && board[6] == player) ) {
+          return true;
+} else {
+          return false;
+}
+}
+function testTie(board) {
+for (var i = 0; i < board.length; i++) {
+  if (board[i] == 0) {
+    return false;
+  }
+}
+return true;
+}
+
+} */
