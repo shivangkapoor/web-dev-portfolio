@@ -215,118 +215,98 @@ $(document).ready(function() {
   }
   //a function that returns a preferred move based on the current board state
   function findBestMove(boardState, compTile) {
-    var preferredMoves = [4, 0, 2, 6, 8, 1, 3, 5];
+    var maxPlayer = (compTile === "exes") ? 2 : 5;
+    var minPlayer = (maxPlayer == 2) ? 5 : 2;
+    var bestMove = -100;
+    var move = 0;
 
-    for(var i = 0; i < preferredMoves.length; i++) {
-      var move = preferredMoves[i];
-      console.log("move = " + move);
-      if(boardState[move] == 0 && boardState[move] !== 2 && boardState[move] !== 5) {
-        return move;
-      }
-    }
-  }
-});
-
-/*
-*/
-
-
-/* MINIMAX series of functions
-
-var maxPlayer = (compTile == "exes") ? 2 : 5;
-var minPlayer = (maxPlayer == 2) ? 5 : 2;
-var bestMove = -100;
-var move = 0;
-
-for(var i = 0; i < boardState.length; i++) {
-  var newBoard = testMove(boardState, i, maxPlayer);
-  if(newBoard) {
-    var predictedMoveValue = minValue(newBoard, minPlayer, maxPlayer);
-    if(predictedMoveValue > bestMove) {
-      bestMove = predictedMoveValue;
-      move = i;
-    }
-  }
-}
-return move;
-}
-function minValue(testBoard, minPlayer, maxPlayer) {
-if(testWinner(testBoard, maxPlayer)) {
-  return 1;
-} else if (testWinner(testBoard, minPlayer)) {
-  return -1;
-} else if (testTie(testBoard)) {
-  return 0;
-} else {
-  var bestMove = 100;
-  var move = 0;
-  for (var i = 0; i < board.length; i++) {
-    var newBoard = testMove(board, i, minPlayer);
+    for(var i = 0; i < boardState.length; i++) {
+      var newBoard = testMove(boardState, i, maxPlayer);
       if(newBoard) {
-        var predictedMoveValue = maxValue(newBoard, minPlayer, maxPlayer);
-        if (predictedMoveValue < bestMove) {
-          bestMove = predictedMoveValue;
+        var predictedMove = minValue(newBoard, minPlayer, maxPlayer);
+        if(predictedMove > bestMove) {
+          bestMove = predictedMove;
           move = i;
         }
       }
+    }
+    return move;
   }
-  return bestMove;
-}
-}
-function maxValue(testBoard, minPlayer, maxPlayer) {
-if (testWinner(testBoard, maxPlayer)) {
-  return 1;
-} else if(testWinner(testBoard, minPlayer)) {
-  return -1;
-} else if (testTie(testBoard)) {
-  return 0;
-} else {
-  var bestMove = -100;
-  var move = 0;
-  for(var i = 0; i < board.length; i++) {
-    var newBoard = testMove(testBoard, maxPlayer, i);
-    if (newBoard) {
-      var predictedMoveValue = minValue(newBoard, minPlayer, maxPlayer);
-      if (predictedMoveValue > bestMoveValue) {
-        bestMove = predictedMoveValue;
-        move = i;
+  function minValue(testBoard, minPlayer, maxPlayer) {
+    if(testWinner(testBoard, maxPlayer)) {
+      return 1;
+    } else if (testWinner(testBoard, minPlayer)) {
+      return -1;
+    } else if (testTie(testBoard)) {
+      return 0;
+    } else {
+      var bestMove = 100;
+      for (var i = 0; i < testBoard.length; i++) {
+        var newBoard = testMove(testBoard, i, minPlayer);
+        if(newBoard) {
+          var predictedMove = maxValue(newBoard, minPlayer, maxPlayer);
+          if (predictedMove < bestMove) {
+            bestMove = predictedMove;
+          }
+        }
       }
+      return bestMove;
     }
   }
-  return bestMove;
-}
-}
-function testMove(boardState, move, player) {
-var newBoard = boardState;
-
-if(newBoard[move] == 0) {
-  newBoard[move] = player;
-  return newBoard;
-} else {
-  return null;
-}
-}
-function testWinner(board, player) {
-if (  (board[0] == player && board[1] == player && board[2] == player) ||
-      (board[3] == player && board[4] == player && board[5] == player) ||
-      (board[6] == player && board[7] == player && board[8] == player) ||
-      (board[0] == player && board[3] == player && board[6] == player) ||
-      (board[1] == player && board[4] == player && board[7] == player) ||
-      (board[2] == player && board[5] == player && board[8] == player) ||
-      (board[0] == player && board[4] == player && board[8] == player) ||
-      (board[2] == player && board[4] == player && board[6] == player) ) {
-          return true;
-} else {
-          return false;
-}
-}
-function testTie(board) {
-for (var i = 0; i < board.length; i++) {
-  if (board[i] == 0) {
-    return false;
+  function maxValue(testBoard, minPlayer, maxPlayer) {
+    if (testWinner(testBoard, maxPlayer)) {
+      return 1;
+    } else if(testWinner(testBoard, minPlayer)) {
+      return -1;
+    } else if (testTie(testBoard)) {
+      return 0;
+    } else {
+      var bestMove = -100;
+      for(var i = 0; i < testBoard.length; i++) {
+        var newBoard = testMove(testBoard, i, maxPlayer);
+        if(newBoard) {
+          var predictedMove = minValue(newBoard, minPlayer, maxPlayer);
+          if (predictedMove > bestMove) {
+            bestMove = predictedMove;
+          }
+        }
+      }
+      return bestMove;
+    }
   }
-}
-return true;
-}
+  function copyBoard(board) {
+    return board.slice(0);
+  }
+  function testMove(boardState, move, player) {
+    var testBoard = copyBoard(boardState);
 
-} */
+    if(testBoard[move] == 0) {
+      testBoard[move] = player;
+      return testBoard;
+    } else {
+      return null;
+    }
+  }
+  function testWinner(board, player) {
+    if (  (board[0] == player && board[1] == player && board[2] == player) ||
+          (board[3] == player && board[4] == player && board[5] == player) ||
+          (board[6] == player && board[7] == player && board[8] == player) ||
+          (board[0] == player && board[3] == player && board[6] == player) ||
+          (board[1] == player && board[4] == player && board[7] == player) ||
+          (board[2] == player && board[5] == player && board[8] == player) ||
+          (board[0] == player && board[4] == player && board[8] == player) ||
+          (board[2] == player && board[4] == player && board[6] == player) ) {
+              return true;
+    } else {
+              return false;
+    }
+  }
+  function testTie(board) {
+    for (var i = 0; i < board.length; i++) {
+      if (board[i] == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+});
